@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 // List all the tasks of currently logged in user.
 exports.list_all_tasks = function(req, res) {
-    Task.find({userId: req.session.userId}, function(err, tasks) {
+    Task.find({userId: req.user}, function(err, tasks) {
         if(err)
             return res.send(err);
         return res.json(tasks);
@@ -15,7 +15,7 @@ exports.list_all_tasks = function(req, res) {
 // Create a new task in user account.
 exports.create_a_task = function(req, res) {
     var new_task = new Task(req.body);
-    new_task.userId = req.session.userId;
+    new_task.userId = req.user;
     new_task.save(function(err, task) {
         if(err)
             return res.send(err);
@@ -28,7 +28,7 @@ exports.read_a_task = function(req, res) {
     Task.find({
         $and: [
             {_id: req.params.taskId},
-            {userId: req.session.userId}
+            {userId: req.user}
         ]
     }, 
         function(err, task) {
@@ -46,7 +46,7 @@ exports.update_a_task = function(req, res) {
     Task.findOneAndUpdate({
         $and: [
             {_id: req.params.taskId},
-            {userId: req.session.userId}
+            {userId: req.user}
         ]}, req.body, {new: true}, function(err, task) {
             // console.log(task);
             if(err)
@@ -62,7 +62,7 @@ exports.delete_a_task = function(req, res) {
     Task.remove({
         $and: [
             {_id: req.params.taskId},
-            {userId: req.session.userId}
+            {userId: req.user}
         ]
     },
         function(err, task) {

@@ -1,16 +1,23 @@
 var express = require('express'),
     app = express(),
-    PORT = 8080,
     mongose = require('mongoose'),
     Task = require('./api/models/todoListModel'),
     body_parser = require('body-parser'),
-    session = require('express-session'),
-    MongoStore = require('connect-mongo')(session);
+    // session = require('express-session'),
+    // MongoStore = require('connect-mongo')(session),
+    jwt = require('jsonwebtoken'),
+    cookieParser = require('cookie-parser');
+    dotenv = require('dotenv');
 
+dotenv.config();
 mongose.Promise = global.Promise;
+app.use(cookieParser());
+
+//Port Number
+const PORT = process.env.PORT;
 
 // Create a connection to MongoDB Database
-mongose.connect('mongodb://mongo/Tododb');
+mongose.connect('mongodb://localhost/Tododb');
 mongose.set('useNewUrlParser', true);
 
 // Register Models
@@ -18,10 +25,10 @@ require('./api/models/todoListModel');
 require('./api/models/userModel');
 
 // Store session information in MongoDB.
-app.use(session({
-    secret: '$up3r$3cr3t',
-    store: new MongoStore({mongooseConnection: mongose.connection})
-}));
+// app.use(session({
+//     secret: '$up3r$3cr3t',
+//     store: new MongoStore({mongooseConnection: mongose.connection})
+// }));
 
 // Body Parser to convert content of body to objects.
 app.use(body_parser.urlencoded({extended: true}));
