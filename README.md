@@ -39,6 +39,6 @@ This will start the API and MongoDB server inside the container. Use **Postman**
 |            | PUT                | name                | Update the task. |
 |            | DELETE             | **None**            | Delete the task with id = taskId. |
 
-* \* These endpoints should contain JWT token to get the response.
+\* These endpoints should contain JWT token to get the response.
 
 
