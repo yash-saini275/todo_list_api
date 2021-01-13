@@ -1,8 +1,8 @@
 # Todo List RESTful API
 This is the REST API to organize all your tasks and their status whether it is pending, ongoing or completed. Uses MongoDB database to store the data. Deploy it locally inside containers.
 
-# Deploy
-## Inside the container.
+## Deploy
+### Inside the container.
 
 1. Clone the repository.
 ```
@@ -27,7 +27,7 @@ cd todo_list_api
 
 This will start the API and MongoDB server inside the container. Use **Postman** to send requests to the API endpoints.
 
-API endpoints:
+### API endpoints:
 | Endpoint   | Method allowed     | Required Parameters | Description         |
 |:----------:|:------------------:|:-------------------:|:-------------------:|
 | /signup    | POST               | first_name, last_name, username, password | Create a new user. |
