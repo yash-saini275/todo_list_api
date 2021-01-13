@@ -1,5 +1,5 @@
 # Todo List RESTful API
-This is the REST API to organize all your tasks and their status whether it is pending, ongoing or completed. Uses MongoDB database to store the data. Deploy it locally inside containers.
+This is the REST API to organize all your tasks and their status whether it is pending, ongoing or completed. Uses MongoDB database to store the data. Deploy it locally inside containers. The Authentication is implemented using Json Web Token (JWT).
 
 ## Deploy
 ### Inside the container.
