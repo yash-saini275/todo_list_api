@@ -31,13 +31,14 @@ This will start the API and MongoDB server inside the container. Use **Postman**
 | Endpoint   | Method allowed     | Required Parameters | Description         |
 |:----------:|:------------------:|:-------------------:|:-------------------:|
 | /signup    | POST               | first_name, last_name, username, password | Create a new user. |
-| /signin    | POST               | username, password  | Login the user if account is already created. |
-| /signout   | GET                | **None**            | Logout the user. |
-| /tasks     | GET                | **None**            | Get all the tasks of current user. |
+| /signin    | POST               | username, password  | Login the user if account is already created. Generate a new JWT.|
+| /signout   | GET                | **None**            | Logout the user. Remove the JWT.|
+| /tasks(\*)  | GET                | **None**            | Get all the tasks of current user. |
 |            | POST               | name                | Create a new task in logged in users account. |
-| /tasks/:taskId | GET            | **None**            | Get the particular task with id = taskId. |
+| /tasks/:taskId(\*) | GET            | **None**            | Get the particular task with id = taskId. |
 |            | PUT                | name                | Update the task. |
 |            | DELETE             | **None**            | Delete the task with id = taskId. |
 
+* \* These endpoints should contain JWT token to get the response.
 
 
